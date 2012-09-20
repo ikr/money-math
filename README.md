@@ -41,7 +41,7 @@ And then
     money.format("JPY", "236800.00");   // "236,800"
     money.floatToAmount(56.345);        // "56.35"
 
-# The MIT License (MIT)
+# License (MIT)
 
 Copyright (c) 2012 Ivan Krechetov
 
