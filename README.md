@@ -1,7 +1,9 @@
+[![Build Status](https://secure.travis-ci.org/ikr/money-math.png)](http://travis-ci.org/ikr/money-math)
+
 # What does it do?
 
 Adds, multiplies the currency _amounts,_ and calculates percentages of _amounts._ The result of
-each of those operations is also an _amount_: a string, strictly matching the `/^\-?\d+\.\d\d$/`
+each of those operations is also an _amount:_ a string, strictly matching the `/^\-?\d+\.\d\d$/`
 pattern, like "0.25", "1000.00", or "-42.10".
 
 _Amounts_ on input and output are arbitrary large and precise:
