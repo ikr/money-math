@@ -22,6 +22,7 @@
         "gmp",
         "currency",
         "bigint",
+        "bignum",
         "arithmetic",
         "arbitrary",
         "precision",
