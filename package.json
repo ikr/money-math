@@ -32,6 +32,11 @@
         "bignum": "0.5.x"
     },
 
+    "directories": {
+        "lib": ".",
+        "test": "spec"
+    },
+
     "devDependencies": {
         "jasmine-node": "1.0.x"
     },
