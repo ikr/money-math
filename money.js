@@ -1,7 +1,7 @@
 (function (exports) {
     "use strict";
 
-    var bigint = require("bigint"),
+    var bignum = require("bignum"),
 
         Currency = function (code) {
             this.code = code;
@@ -95,18 +95,18 @@
 
     exports.add = function (a, b) {
         return exports.centsToAmount(
-            bigint(exports.amountToCents(a)).add(exports.amountToCents(b)).toString()
+            bignum(exports.amountToCents(a)).add(exports.amountToCents(b)).toString()
         );
     };
 
     exports.mul = function (a, b) {
         return exports.centsToAmount(
-            bigint(exports.amountToCents(a)).mul(exports.amountToCents(b)).div("100").toString()
+            bignum(exports.amountToCents(a)).mul(exports.amountToCents(b)).div("100").toString()
         );
     };
 
     exports.percent = function (value, percent) {
-        var p = bigint(exports.amountToCents(value)).mul(exports.amountToCents(percent)),
+        var p = bignum(exports.amountToCents(value)).mul(exports.amountToCents(percent)),
             q = p.div("10000"),
             r = p.mod("10000");
 

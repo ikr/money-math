@@ -29,7 +29,7 @@
     ],
 
     "dependencies": {
-        "bigint": "0.3.x"
+        "bignum": "0.5.x"
     },
 
     "devDependencies": {
