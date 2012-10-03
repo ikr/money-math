@@ -37,6 +37,7 @@ And then
     var money = require("money-math");
 
     money.add("16.11", "17.07");        // "33.18"
+    money.subtract("16.00", "7.00");    // "9.00"
     money.mul("24.00", "0.25");         // "6.00"
     money.percent("200.00", "3.25");    // "6.50"
 
