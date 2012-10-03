@@ -130,6 +130,18 @@
         });
     });
 
+    describe("money.subtract()", function () {
+        it("calculates difference 1", function () {
+            expect(
+                money.subtract("700000000000000000000.00", "700000000000000000000.00")
+            ).toBe("0.00");
+        });
+
+        it("calculates difference 2", function () {
+            expect(money.subtract("-10.00", "5.00")).toBe("-15.00");
+        });
+    });
+
     describe("money.mul()", function () {
         it("multiplies two decimals 1", function () {
             expect(money.mul("-2.00", "2.00")).toBe("-4.00");

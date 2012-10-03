@@ -99,6 +99,12 @@
         );
     };
 
+    exports.subtract = function (a, b) {
+        return exports.centsToAmount(
+            bignum(exports.amountToCents(a)).sub(exports.amountToCents(b)).toString()
+        );
+    };
+
     exports.mul = function (a, b) {
         return exports.centsToAmount(
             bignum(exports.amountToCents(a)).mul(exports.amountToCents(b)).div("100").toString()
