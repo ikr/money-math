@@ -207,4 +207,18 @@
             expect(money.floatToAmount(-0.346)).toBe("-0.35");
         });
     });
+
+    describe("money.roundUpTo5Cents()", function () {
+        it("is identical for zero", function () {
+            expect(money.roundUpTo5Cents("0.00")).toBe("0.00");
+        });
+
+        it("rounds 02 to 05", function () {
+            expect(money.roundUpTo5Cents("1.02")).toBe("1.05");
+        });
+
+        it("rounds 06 to 10", function () {
+            expect(money.roundUpTo5Cents("156.06")).toBe("156.10");
+        });
+    });
 }());

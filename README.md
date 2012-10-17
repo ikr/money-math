@@ -32,7 +32,7 @@ Because storing currency amounts in floats [is a really bad idea](http://stackov
 
     $ npm install money-math
 
-And then
+Then
 
     var money = require("money-math");
 
@@ -43,6 +43,12 @@ And then
 
     money.format("JPY", "236800.00");   // "236,800"
     money.floatToAmount(56.345);        // "56.35"
+
+And last, but not least :)
+
+    money.roundUpTo5Cents("42.02");     // "42.05"
+
+Which we use for bills in CHF that are required by law to be 0 (mod 5).
 
 # License (MIT)
 

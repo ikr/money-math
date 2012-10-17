@@ -120,4 +120,15 @@
             (r.gt("4999") ? q.add(1) : q).toString()
         );
     };
+
+    exports.roundUpTo5Cents = function (amount) {
+        var lastDigit = parseInt(amount.substr(-1), 10),
+            additon = "0.00";
+
+        if ((lastDigit % 5) !== 0) {
+            additon = "0.0" + (5 - (lastDigit % 5));
+        }
+
+        return exports.add(amount, additon);
+    };
 }(exports));
