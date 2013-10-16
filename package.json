@@ -1,47 +1,39 @@
 {
-    "name": "money-math",
-    "version": "0.3.0",
-    "description": "bignum-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
-    "main": "money.js",
-
-    "engines": {
-        "node": ">=0.4.0"
-    },
-
-    "scripts": {
-        "test": "jasmine-node ./spec"
-    },
-
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/ikr/money-math.git"
-    },
-
-    "keywords": [
-        "money",
-        "gmp",
-        "currency",
-        "bigint",
-        "bignum",
-        "arithmetic",
-        "arbitrary",
-        "precision",
-        "format"
-    ],
-
-    "dependencies": {
-        "bignum": "0.5.x"
-    },
-
-    "directories": {
-        "lib": ".",
-        "test": "spec"
-    },
-
-    "devDependencies": {
-        "jasmine-node": "1.0.x"
-    },
-
-    "author": "Ivan Krechetov <ivan.krechetov@gmail.com>",
-    "license": "MIT"
+  "name": "money-math",
+  "version": "0.4.0",
+  "description": "bignum-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
+  "main": "money.js",
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "scripts": {
+    "test": "jasmine-node ./spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ikr/money-math.git"
+  },
+  "keywords": [
+    "money",
+    "gmp",
+    "currency",
+    "bigint",
+    "bignum",
+    "arithmetic",
+    "arbitrary",
+    "precision",
+    "format"
+  ],
+  "dependencies": {
+    "bignum": "~0.6.2"
+  },
+  "directories": {
+    "lib": ".",
+    "test": "spec"
+  },
+  "devDependencies": {
+    "jasmine-node": "~1.11.0"
+  },
+  "author": "Ivan Krechetov <ivan.krechetov@gmail.com>",
+  "license": "MIT"
 }
