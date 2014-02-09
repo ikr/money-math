@@ -8,6 +8,18 @@
             expect(money.amountToCents("126.99")).toBe("12699");
         });
 
+        it("works for integer", function () {
+            expect(money.amountToCents("1")).toBe("100");
+        });
+
+        it("works for amount with one decimal points", function () {
+            expect(money.amountToCents("1.0")).toBe("100");
+        });
+
+        it("works for amount with wront placed point", function () {
+            expect(money.amountToCents("1.")).toBe("100");
+        });
+
         it("works on negative amount", function () {
             expect(money.amountToCents("-10001.00")).toBe("-1000100");
         });
@@ -108,6 +120,14 @@
 
         it("sums mixed decimals 2", function () {
             expect(money.add("-1.99", "0.98")).toBe("-1.01");
+        });
+
+        it("sums decimal and integer 1", function () {
+            expect(money.add("1.00", "1")).toBe("2.00");
+        });
+
+        it("sums decimals with diffirect fraction", function () {
+            expect(money.add("1.000", "1.0")).toBe("2.00");
         });
 
         it("chain-sums decimals", function () {

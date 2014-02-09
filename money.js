@@ -29,9 +29,9 @@
                     break;
                 }
 
-                appendix =  src.substr(src.length - 3, 3);
+                appendix = src.substr(src.length - 3, 3);
                 ret = appendix + ret;
-                src =  src.substr(0, src.length - 3);
+                src = src.substr(0, src.length - 3);
             }
 
             return sign + ret;
@@ -64,6 +64,14 @@
     };
 
     exports.amountToCents = function (amount) {
+        if (amount.indexOf('.') === -1)
+            amount += '.00';
+        if (amount.indexOf('.') === amount.length - 1)
+            amount += '00';
+        if (amount.indexOf('.') === amount.length - 2)
+            amount += '0';
+        if (amount.indexOf('.') < amount.length - 2)
+            amount.replace(amount.slice(amount.indexOf('.')), '');
         return amount.replace(".", "");
     };
 
