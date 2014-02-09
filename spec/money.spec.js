@@ -16,8 +16,12 @@
             expect(money.amountToCents("1.0")).toBe("100");
         });
 
-        it("works for amount with wront placed point", function () {
+        it("works for amount with wrong placed point", function () {
             expect(money.amountToCents("1.")).toBe("100");
+        });
+
+        it("works for amount with more than two zeros", function () {
+            expect(money.amountToCents("1.000")).toBe("100");
         });
 
         it("works on negative amount", function () {
@@ -126,7 +130,7 @@
             expect(money.add("1.00", "1")).toBe("2.00");
         });
 
-        it("sums decimals with diffirect fraction", function () {
+        it("sums decimals with diffirent fraction", function () {
             expect(money.add("1.000", "1.0")).toBe("2.00");
         });
 

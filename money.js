@@ -70,8 +70,8 @@
             amount += '00';
         if (amount.indexOf('.') === amount.length - 2)
             amount += '0';
-        if (amount.indexOf('.') < amount.length - 2)
-            amount.replace(amount.slice(amount.indexOf('.')), '');
+        if (amount.indexOf('.') < amount.length - 3)
+            amount = amount.replace(amount.slice(amount.indexOf('.')), '.00');
         return amount.replace(".", "");
     };
 
