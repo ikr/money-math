@@ -22,6 +22,14 @@
             expect(money.centsToAmount("-1000100")).toBe("-10001.00");
         });
 
+        it("works on a negative fraction", function () {
+            expect(money.centsToAmount("-32")).toBe("-0.32");
+        });
+
+        it("works on a tiny negative fraction", function () {
+            expect(money.centsToAmount("-1")).toBe("-0.01");
+        });
+
         it("works for zero", function () {
             expect(money.centsToAmount("0")).toBe("0.00");
         });
@@ -149,6 +157,24 @@
 
         it("multiplies two decimals 2", function () {
             expect(money.mul("24.00", "0.25")).toBe("6.00");
+        });
+    });
+
+    describe("money.div()", function () {
+        it("basically works", function () {
+            expect(money.div("64.00", "2.00")).toBe("32.00");
+        });
+
+        it("rounds stuff up 1", function () {
+            expect(money.div("1.00", "3.00")).toBe("0.33");
+        });
+
+        it("rounds stuff up 2", function () {
+            expect(money.div("0.50", "3.00")).toBe("0.17");
+        });
+
+        it("works for negative dividend, with rounding up", function () {
+            expect(money.div("-1.00", "3.00")).toBe("-0.33");
         });
     });
 

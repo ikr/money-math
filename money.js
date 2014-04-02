@@ -68,15 +68,21 @@
     };
 
     exports.centsToAmount = function (cents) {
+        var sign,
+            abs;
+
         if (!isString(cents)) {
             return;
         }
 
-        while (cents.length < 3) {
-            cents = ["0", cents].join("");
+        sign = (cents[0] === "-" ? "-" : "");
+        abs = (sign === "-" ? cents.substr(1) : cents)
+
+        while (abs.length < 3) {
+            abs = ["0", abs].join("");
         }
 
-        return cents.substr(0, cents.length - 2) + "." + cents.substr(-2);
+        return sign + abs.substr(0, abs.length - 2) + "." + abs.substr(-2);
     };
 
     exports.floatToAmount = function (f) {
@@ -108,6 +114,20 @@
     exports.mul = function (a, b) {
         return exports.centsToAmount(
             bignum(exports.amountToCents(a)).mul(exports.amountToCents(b)).div("100").toString()
+        );
+    };
+
+    exports.div = function (a, b) {
+        var hundredthsOfCents = bignum(
+                exports.amountToCents(a)
+            ).mul("10000").div(
+                exports.amountToCents(b)
+            ),
+
+            remainder = parseInt(hundredthsOfCents.toString().substr(-2), 10);
+
+        return exports.centsToAmount(
+            hundredthsOfCents.div("100").add(remainder > 50 ? 1 : 0).toString()
         );
     };
 
