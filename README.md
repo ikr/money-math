@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/ikr/money-math.png)](http://travis-ci.org/ikr/money-math)
+[![Build Status](https://travis-ci.org/ikr/money-math.svg?branch=master)](https://travis-ci.org/ikr/money-math)
 
 # What does it do?
 
