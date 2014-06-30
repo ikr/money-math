@@ -1,6 +1,6 @@
 {
   "name": "money-math",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "bignum-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
   "main": "money.js",
   "engines": {
