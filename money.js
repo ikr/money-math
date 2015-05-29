@@ -1,7 +1,7 @@
 (function (exports) {
     "use strict";
 
-    var bignum = require("bignum"),
+    var BigInteger = require("jsbn"),
 
         Currency = function (code) {
             this.code = code;
@@ -101,43 +101,68 @@
 
     exports.add = function (a, b) {
         return exports.centsToAmount(
-            bignum(exports.amountToCents(a)).add(exports.amountToCents(b)).toString()
+            new BigInteger(
+                exports.amountToCents(a)
+            ).add(
+                new BigInteger(exports.amountToCents(b))
+            ).toString()
         );
     };
 
     exports.subtract = function (a, b) {
         return exports.centsToAmount(
-            bignum(exports.amountToCents(a)).sub(exports.amountToCents(b)).toString()
+            new BigInteger(
+                exports.amountToCents(a)
+            ).subtract(
+                new BigInteger(exports.amountToCents(b))
+            ).toString()
         );
     };
 
     exports.mul = function (a, b) {
         return exports.centsToAmount(
-            bignum(exports.amountToCents(a)).mul(exports.amountToCents(b)).div("100").toString()
+            new BigInteger(
+                exports.amountToCents(a)
+            ).multiply(
+                new BigInteger(exports.amountToCents(b))
+            ).divide(
+                new BigInteger("100")
+            ).toString()
         );
     };
 
     exports.div = function (a, b) {
-        var hundredthsOfCents = bignum(
+        var hundredthsOfCents = new BigInteger(
                 exports.amountToCents(a)
-            ).mul("10000").div(
-                exports.amountToCents(b)
+            ).multiply(
+                new BigInteger("10000")
+            ).divide(
+                new BigInteger(exports.amountToCents(b))
             ),
 
             remainder = parseInt(hundredthsOfCents.toString().substr(-2), 10);
 
         return exports.centsToAmount(
-            hundredthsOfCents.div("100").add(remainder > 50 ? 1 : 0).toString()
+            hundredthsOfCents.divide(
+                new BigInteger("100")
+            ).add(
+                new BigInteger(remainder > 50 ? "1" : "0")
+            ).toString()
         );
     };
 
     exports.percent = function (value, percent) {
-        var p = bignum(exports.amountToCents(value)).mul(exports.amountToCents(percent)),
-            q = p.div("10000"),
-            r = p.mod("10000");
+        var p = new BigInteger(
+                exports.amountToCents(value)
+            ).multiply(
+                new BigInteger(exports.amountToCents(percent))
+            ),
+
+            q = p.divide(new BigInteger("10000")),
+            r = p.mod(new BigInteger("10000"));
 
         return exports.centsToAmount(
-            (r.gt("4999") ? q.add(1) : q).toString()
+            (r.compareTo(new BigInteger("4999")) > 0 ? q.add(new BigInteger("1")) : q).toString()
         );
     };
 
