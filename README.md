@@ -30,7 +30,9 @@ Because storing currency amounts in floats [is a really bad idea](http://stackov
 
 # How to use it?
 
-    $ npm install money-math
+Works both on Node and in the browser.
+
+    $ npm install --save money-math
 
 Then
 
@@ -53,7 +55,7 @@ Which we use for bills in CHF that are required by law to be 0 (mod 5).
 
 # License (MIT)
 
-Copyright (c) 2012 Ivan Krechetov
+Copyright (c) 2012-2015 Ivan Krechetov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

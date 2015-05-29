@@ -1,11 +1,8 @@
 {
   "name": "money-math",
   "version": "1.2.0",
-  "description": "bignum-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
+  "description": "jsbn-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
   "main": "money.js",
-  "engines": {
-    "node": ">=0.8.0"
-  },
   "scripts": {
     "test": "jasmine-node ./spec"
   },
@@ -19,13 +16,16 @@
     "currency",
     "bigint",
     "bignum",
+    "jsbn",
+    "browser",
+    "browserify",
     "arithmetic",
     "arbitrary",
     "precision",
     "format"
   ],
   "dependencies": {
-    "bignum": "~0.9.0"
+    "jsbn": "0.0.0"
   },
   "directories": {
     "lib": ".",
@@ -34,6 +34,6 @@
   "devDependencies": {
     "jasmine-node": "~1.11.0"
   },
-  "author": "Ivan Krechetov <ivan.krechetov@gmail.com>",
+  "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT"
 }
