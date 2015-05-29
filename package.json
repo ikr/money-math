@@ -4,6 +4,7 @@
   "description": "jsbn-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
   "main": "money.js",
   "scripts": {
+    "pretest": "eslint ./*.js ./spec/*.js",
     "test": "jasmine-node ./spec"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "test": "spec"
   },
   "devDependencies": {
+    "eslint": "^0.21.2",
     "jasmine-node": "~1.11.0"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",

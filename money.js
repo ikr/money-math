@@ -1,19 +1,19 @@
-(function (exports) {
+(function () {
     "use strict";
 
-    var BigInteger = require("jsbn"),
+    var BigInteger = require("jsbn");
 
-        Currency = function (code) {
+    var Currency = function (code) {
             this.code = code;
         },
 
-        separateThousands = function (in_str, with_str) {
+        separateThousands = function (inStr, withStr) {
             var sign = "",
-                src = in_str,
+                src = inStr,
                 ret = "",
                 appendix;
 
-            if ("-" === in_str[0]) {
+            if (inStr[0] === "-") {
                 sign = "-";
                 src = src.substr(1);
             }
@@ -21,7 +21,7 @@
 
             while (src.length > 0) {
                 if (ret.length > 0) {
-                    ret = with_str + ret;
+                    ret = withStr + ret;
                 }
 
                 if (src.length <= 3) {
@@ -29,9 +29,9 @@
                     break;
                 }
 
-                appendix =  src.substr(src.length - 3, 3);
+                appendix = src.substr(src.length - 3, 3);
                 ret = appendix + ret;
-                src =  src.substr(0, src.length - 3);
+                src = src.substr(0, src.length - 3);
             }
 
             return sign + ret;
@@ -50,12 +50,12 @@
         case "JPY":
             return separateThousands(integerValue(amount), ",");
 
-        case 'EUR':
-        case 'GBP':
+        case "EUR":
+        case "GBP":
             return separateThousands(integerValue(amount), ".") + "," + amount.substr(-2);
 
-        case 'CHF':
-        case 'USD':
+        case "CHF":
+        case "USD":
             return separateThousands(integerValue(amount), ",") + "." + amount.substr(-2);
 
         default:
@@ -72,11 +72,11 @@
             abs;
 
         if (!isString(cents)) {
-            return;
+            return undefined;
         }
 
         sign = (cents[0] === "-" ? "-" : "");
-        abs = (sign === "-" ? cents.substr(1) : cents)
+        abs = (sign === "-" ? cents.substr(1) : cents);
 
         while (abs.length < 3) {
             abs = ["0", abs].join("");
@@ -176,4 +176,4 @@
 
         return exports.add(amount, additon);
     };
-}(exports));
+}());
