@@ -5,7 +5,8 @@
   "main": "money.js",
   "scripts": {
     "pretest": "eslint ./*.js ./spec/*.js",
-    "test": "jasmine-node ./spec"
+    "test": "mocha ./spec/*.spec.js",
+    "tdd": "mocha -b -R min -w ./spec/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -33,8 +34,8 @@
     "test": "spec"
   },
   "devDependencies": {
-    "eslint": "^0.21.2",
-    "jasmine-node": "~1.11.0"
+    "eslint": "^0.23.0",
+    "mocha": "^2.2.5"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT"
