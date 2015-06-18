@@ -1,3 +1,47 @@
 env:
   node: true
   jasmine: true
+
+rules:
+  no-console: 1
+  no-reserved-keys: 2
+  quotes:
+    - 2
+    - double
+  no-else-return: 2
+  no-param-reassign: 2
+  no-self-compare: 2
+  no-throw-literal: 2
+  no-void: 2
+  no-warning-comments: 2
+  radix: 2
+  wrap-iife: 2
+  indent:
+    - 2
+    - 4
+  brace-style:
+    - 2
+    - '1tbs'
+  no-lonely-if: 2
+  no-multiple-empty-lines: 2
+  no-nested-ternary: 2
+  padded-blocks:
+    - 2
+    - never
+  space-after-keywords:
+    - 2
+    - always
+  space-before-blocks:
+    - 2
+    - always
+  space-before-function-paren:
+    - 2
+    -
+      anonymous: always
+      named: never
+  space-in-brackets:
+    - 2
+    - never
+  space-in-parens:
+    - 2
+    - never
