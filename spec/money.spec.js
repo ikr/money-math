@@ -248,4 +248,30 @@
             assert.strictEqual(money.roundUpTo5Cents("156.06"), "156.10");
         });
     });
+
+    describe("money.roundTo5Cents()", function () {
+        it("is identical for one", function () {
+            assert.strictEqual(money.roundTo5Cents("1.00"), "1.00");
+        });
+
+        it("rounds 01 to 00", function () {
+            assert.strictEqual(money.roundTo5Cents("2.01"), "2.00");
+        });
+
+        it("rounds 04 to 05", function () {
+            assert.strictEqual(money.roundTo5Cents("2.04"), "2.05");
+        });
+
+        it("rounds 26 to 25", function () {
+            assert.strictEqual(money.roundTo5Cents("442.26"), "442.25");
+        });
+
+        it("rounds 97 to 95", function () {
+            assert.strictEqual(money.roundTo5Cents("1.97"), "1.95");
+        });
+
+        it("rounds 88 to 90", function () {
+            assert.strictEqual(money.roundTo5Cents("1.88"), "1.90");
+        });
+    });
 }());

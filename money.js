@@ -43,6 +43,17 @@
 
         isString = function (obj) {
             return Object.prototype.toString.call(obj) === "[object String]";
+        },
+
+        round = function (amount) {
+            var fraction = parseInt(amount.substr(-2), 10),
+                wholeAmount = integerValue(amount) + ".00";
+
+            return (
+                fraction < 50 ?
+                wholeAmount :
+                exports.add(wholeAmount, "1.00")
+            );
         };
 
     Currency.prototype.format = function (amount) {
@@ -175,5 +186,12 @@
         }
 
         return exports.add(amount, additon);
+    };
+
+    exports.roundTo5Cents = function (amount) {
+        return exports.div(
+            round(exports.mul(amount, "20.00")),
+            "20.00"
+        );
     };
 }());

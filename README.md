@@ -50,6 +50,7 @@ Then
 And last, but not least :)
 
     money.roundUpTo5Cents("42.02");     // "42.05"
+    money.roundTo5Cents("442.26");      // "442.25"
 
 Which we use for bills in CHF that are required by law to be 0 (mod 5).
 
