@@ -54,6 +54,23 @@ And last, but not least :)
 
 Which we use for bills in CHF that are required by law to be 0 (mod 5).
 
+# An important note on the amount "data type"
+
+The _amount_ strings are expected to strictly adhere to the format described by the regular
+expression noted [above](#what-does-it-do). Thus, for example, it must be:
+
+* `"10.10"`, not `"10.1"`, not `"10.100"`;
+* `"10.00"`, not `10`, not `"10"`, not `"10.0"`.
+
+That's a precondition for any of the API functions accepting _amount_ arguments to work correctly. I
+understand that it may be confusing to some of new users; but I believe that's an optimally
+pragmatic way to mimic, by convention, an algebraic data type in idiomatic JavaScript -- a (very)
+dynamically typed language.
+
+Luckily, you can always move your arbitrary float value into the _amounts field_ with
+`money.floatToAmount(...)`. Once all the values are _amounts,_ money-math guarantees that all the
+_field_ operations keep the results withing the _field._ Classic algebra.
+
 # License (MIT)
 
 Copyright (c) 2012-2015 Ivan Krechetov
