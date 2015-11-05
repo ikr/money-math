@@ -195,7 +195,7 @@
         );
     };
 
-    exports.comp = function (a, b) {
+    exports.cmp = function (a, b) {
         return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
     };
 }());
