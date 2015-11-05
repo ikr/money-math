@@ -274,4 +274,70 @@
             assert.strictEqual(money.roundTo5Cents("1.88"), "1.90");
         });
     });
+
+    describe("money.comp()", function () {
+        it("big and small", function () {
+            assert.strictEqual(money.comp("55.00", "6.00") > 0, true);
+        });
+
+        it("small and big", function () {
+            assert.strictEqual(money.comp("8.00", "11.00") < 0, true);
+        });
+
+        it("equal", function () {
+            assert.strictEqual(money.comp("8.00", "8.00"), 0);
+        });
+
+        it("big cents and small cents", function () {
+            assert.strictEqual(money.comp("0.10", "0.05") > 0, true);
+        });
+
+        it("small cents and big cents", function () {
+            assert.strictEqual(money.comp("0.01", "0.20") < 0, true);
+        });
+
+        it("equal with cents", function () {
+            assert.strictEqual(money.comp("8.16", "8.16"), 0);
+        });
+
+        it("long amount big and small", function () {
+            assert.strictEqual(
+                money.comp(
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.00",
+                    "599999999999999999999999999999999999999999999999999999999999999999999999.00"
+                ) > 0,
+                true
+            );
+        });
+
+        it("long amount small and big", function () {
+            assert.strictEqual(
+                money.comp(
+                    "5999999999999999999999999999999999999999999999999999999999999999999999991.00",
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.00"
+                ) < 0,
+                true
+            );
+        });
+
+        it("long amount equal", function () {
+            assert.strictEqual(
+                money.comp(
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.00",
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.00"
+                ),
+                0
+            );
+        });
+
+        it("long amount with cents", function () {
+            assert.strictEqual(
+                money.comp(
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.10",
+                    "5999999999999999999999999999999999999999999999999999999999999999999999999.02"
+                ) > 0,
+                true
+            );
+        });
+    });
 }());

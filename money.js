@@ -194,4 +194,8 @@
             "20.00"
         );
     };
+
+    exports.comp = function (a, b) {
+        return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
+    };
 }());
