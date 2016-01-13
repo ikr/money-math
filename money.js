@@ -9,7 +9,7 @@
         var BigInteger = require("jsbn");
         factory(root, exports, BigInteger);
     } else {
-        root.Money = factory(root, {}, BigInteger);
+        root.Money = factory(root, {}, root.BigInteger);
     }
 }(function (root, Money, BigInteger) {
     "use strict";
@@ -209,4 +209,6 @@
     Money.cmp = function (a, b) {
         return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
     };
+
+    return Money;
 }));
