@@ -38,13 +38,15 @@ Works both on Node and in the browser.
     var money = require("money-math");
 
 # Browserify
-    Download [money.js](money.js)
+
+Download [money.js](money.js)
 
     var money = require("money-math");
 
 # Browser global
-    Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.js)
-    Download [money.js](money.js)
+
+Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.js)
+Download [money.js](money.js)
 
     window.Money
 
