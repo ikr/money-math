@@ -46,6 +46,7 @@ Download [money.js](money.js)
 # Browser global
 
 Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.js)
+
 Download [money.js](money.js)
 
     window.Money
