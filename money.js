@@ -1,7 +1,18 @@
-(function () {
+(function (factory) {
     "use strict";
 
-    var BigInteger = require("jsbn");
+    var root = (typeof self === "object" && self.self === self && self) ||
+                (typeof global === "object" && global.global === global && global);
+
+
+    if (typeof exports !== "undefined") {
+        var BigInteger = require("jsbn");
+        factory(root, exports, BigInteger);
+    } else {
+        root.Money = factory(root, {}, root.BigInteger);
+    }
+}(function (root, Money, BigInteger) {
+    "use strict";
 
     var Currency = function (code) {
             this.code = code;
@@ -52,7 +63,7 @@
             return (
                 fraction < 50 ?
                 wholeAmount :
-                exports.add(wholeAmount, "1.00")
+                Money.add(wholeAmount, "1.00")
             );
         };
 
@@ -74,11 +85,11 @@
         }
     };
 
-    exports.amountToCents = function (amount) {
+    Money.amountToCents = function (amount) {
         return amount.replace(".", "");
     };
 
-    exports.centsToAmount = function (cents) {
+    Money.centsToAmount = function (cents) {
         var sign,
             abs;
 
@@ -96,64 +107,64 @@
         return sign + abs.substr(0, abs.length - 2) + "." + abs.substr(-2);
     };
 
-    exports.floatToAmount = function (f) {
+    Money.floatToAmount = function (f) {
         return ("" + Math.round(f * 100.0) / 100.0)
             .replace(/^(\d+)$/, "$1.00")
             .replace(/^(\d+)\.(\d)$/, "$1.$20");
     };
 
-    exports.integralPart = function (amount) {
+    Money.integralPart = function (amount) {
         return integerValue(amount);
     };
 
-    exports.format = function (currency, amount) {
+    Money.format = function (currency, amount) {
         return new Currency(currency).format(amount);
     };
 
-    exports.add = function (a, b) {
-        return exports.centsToAmount(
+    Money.add = function (a, b) {
+        return Money.centsToAmount(
             new BigInteger(
-                exports.amountToCents(a)
+                Money.amountToCents(a)
             ).add(
-                new BigInteger(exports.amountToCents(b))
+                new BigInteger(Money.amountToCents(b))
             ).toString()
         );
     };
 
-    exports.subtract = function (a, b) {
-        return exports.centsToAmount(
+    Money.subtract = function (a, b) {
+        return Money.centsToAmount(
             new BigInteger(
-                exports.amountToCents(a)
+                Money.amountToCents(a)
             ).subtract(
-                new BigInteger(exports.amountToCents(b))
+                new BigInteger(Money.amountToCents(b))
             ).toString()
         );
     };
 
-    exports.mul = function (a, b) {
-        return exports.centsToAmount(
+    Money.mul = function (a, b) {
+        return Money.centsToAmount(
             new BigInteger(
-                exports.amountToCents(a)
+                Money.amountToCents(a)
             ).multiply(
-                new BigInteger(exports.amountToCents(b))
+                new BigInteger(Money.amountToCents(b))
             ).divide(
                 new BigInteger("100")
             ).toString()
         );
     };
 
-    exports.div = function (a, b) {
+    Money.div = function (a, b) {
         var hundredthsOfCents = new BigInteger(
-                exports.amountToCents(a)
+                Money.amountToCents(a)
             ).multiply(
                 new BigInteger("10000")
             ).divide(
-                new BigInteger(exports.amountToCents(b))
+                new BigInteger(Money.amountToCents(b))
             ),
 
             remainder = parseInt(hundredthsOfCents.toString().substr(-2), 10);
 
-        return exports.centsToAmount(
+        return Money.centsToAmount(
             hundredthsOfCents.divide(
                 new BigInteger("100")
             ).add(
@@ -162,22 +173,22 @@
         );
     };
 
-    exports.percent = function (value, percent) {
+    Money.percent = function (value, percent) {
         var p = new BigInteger(
-                exports.amountToCents(value)
+                Money.amountToCents(value)
             ).multiply(
-                new BigInteger(exports.amountToCents(percent))
+                new BigInteger(Money.amountToCents(percent))
             ),
 
             q = p.divide(new BigInteger("10000")),
             r = p.mod(new BigInteger("10000"));
 
-        return exports.centsToAmount(
+        return Money.centsToAmount(
             (r.compareTo(new BigInteger("4999")) > 0 ? q.add(new BigInteger("1")) : q).toString()
         );
     };
 
-    exports.roundUpTo5Cents = function (amount) {
+    Money.roundUpTo5Cents = function (amount) {
         var lastDigit = parseInt(amount.substr(-1), 10),
             additon = "0.00";
 
@@ -185,17 +196,19 @@
             additon = "0.0" + (5 - (lastDigit % 5));
         }
 
-        return exports.add(amount, additon);
+        return Money.add(amount, additon);
     };
 
-    exports.roundTo5Cents = function (amount) {
-        return exports.div(
-            round(exports.mul(amount, "20.00")),
+    Money.roundTo5Cents = function (amount) {
+        return Money.div(
+            round(Money.mul(amount, "20.00")),
             "20.00"
         );
     };
 
-    exports.cmp = function (a, b) {
+    Money.cmp = function (a, b) {
         return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
     };
-}());
+
+    return Money;
+}));
