@@ -28,16 +28,27 @@ JPY.
 
 Because storing currency amounts in floats [is a really bad idea](http://stackoverflow.com/questions/3730019/why-not-use-double-or-float-to-represent-currency)
 
-# How to use it?
+# Install
 
 Works both on Node and in the browser.
 
+# Node
     $ npm install --save money-math
-
-Then
 
     var money = require("money-math");
 
+# Browserify
+    Download [money.js](money.js)
+
+    var money = require("money-math");
+
+# Browser global
+    Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.js)
+    Download [money.js](money.js)
+
+    window.Money
+
+# Usage
     money.add("16.11", "17.07");        // "33.18"
     money.subtract("16.00", "7.00");    // "9.00"
     money.mul("24.00", "0.25");         // "6.00"
