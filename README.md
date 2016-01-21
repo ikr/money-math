@@ -85,3 +85,13 @@ dynamically typed language.
 Luckily, you can always move your arbitrary float value into the _amounts field_ with
 `money.floatToAmount(...)`. Once all the values are _amounts,_ money-math guarantees that all the
 _field_ operations keep the results withing the _field._ Classic algebra.
+
+A thoughtful reader may ask, why have `money.floatToAmount()`, when there's the
+`Number.prototype.toFixed(2)`? Well, because:
+
+    > 56.155.toFixed(2);
+    '56.16'
+    > 56.345.toFixed(2);
+    '56.34'
+
+Floats are such floats...
