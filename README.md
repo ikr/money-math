@@ -17,12 +17,16 @@ _Amounts_ on input and output are arbitrary large and precise:
 However, in cases when the division is involved — like for percentage calculation — the result is
 rounded to the whole cent.
 
-    money.percent("0.50", "33.00")  // is "0.17" instead of "0.165"
+```javascript
+money.percent("0.50", "33.00")  // is "0.17" instead of "0.165"
+```
 
 As a bonus feature, there's a simple formatting function for _amounts_ in CHF, EUR, USD, GBP, and
 JPY.
 
-    money.format("EUR", "-1560.00") // "-1.560,00"
+```javascript
+money.format("EUR", "-1560.00") // "-1.560,00"
+```
 
 # Why does it exist?
 
@@ -35,13 +39,17 @@ Works both on Node and in the browser.
 # Node
     $ npm install --save money-math
 
-    var money = require("money-math");
+```javascript
+var money = require("money-math");
+```
 
 # Browserify
 
 Download [money.js](money.js)
 
-    var money = require("money-math");
+```javascript
+var money = require("money-math");
+```
 
 # Browser global
 
@@ -49,23 +57,30 @@ Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.
 
 Download [money.js](money.js)
 
-    window.Money
+```javascript
+window.Money
+```
 
 # Usage
-    money.add("16.11", "17.07");        // "33.18"
-    money.subtract("16.00", "7.00");    // "9.00"
-    money.mul("24.00", "0.25");         // "6.00"
-    money.div("64.00", "2.00");         // "32.00"
-    money.percent("200.00", "3.25");    // "6.50"
-    money.cmp("100.00", "200.00");      // -1
 
-    money.format("JPY", "236800.00");   // "236,800"
-    money.floatToAmount(56.345);        // "56.35"
+```javascript
+money.add("16.11", "17.07");        // "33.18"
+money.subtract("16.00", "7.00");    // "9.00"
+money.mul("24.00", "0.25");         // "6.00"
+money.div("64.00", "2.00");         // "32.00"
+money.percent("200.00", "3.25");    // "6.50"
+money.cmp("100.00", "200.00");      // -1
+
+money.format("JPY", "236800.00");   // "236,800"
+money.floatToAmount(56.345);        // "56.35"
+```
 
 And last, but not least :)
 
-    money.roundUpTo5Cents("42.02");     // "42.05"
-    money.roundTo5Cents("442.26");      // "442.25"
+```javascript
+money.roundUpTo5Cents("42.02");     // "42.05"
+money.roundTo5Cents("442.26");      // "442.25"
+```
 
 Which we use for bills in CHF that are required by law to be 0 (mod 5).
 
@@ -89,9 +104,11 @@ _field_ operations keep the results withing the _field._ Classic algebra.
 A thoughtful reader may ask, why have `money.floatToAmount()`, when there's the
 `Number.prototype.toFixed(2)`? Well, because:
 
-    > 56.155.toFixed(2);
-    '56.16'
-    > 56.345.toFixed(2);
-    '56.34'
+```javascript
+> 56.155.toFixed(2);
+'56.16'
+> 56.345.toFixed(2);
+'56.34'
+```
 
 Floats are such floats...
