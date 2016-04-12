@@ -21,8 +21,18 @@ rounded to the whole cent.
 money.percent("0.50", "33.00")  // is "0.17" instead of "0.165"
 ```
 
-As a bonus feature, there's a simple formatting function for _amounts_ in CHF, EUR, USD, GBP, and
-JPY.
+As a bonus feature, there's a simple formatting function for _amounts_ in the following currencies:
+
+  * CHF
+  * EUR
+  * GBP
+  * JPY
+  * LTL
+  * PLN
+  * SEK
+  * SKK
+  * UAH
+  * USD
 
 ```javascript
 money.format("EUR", "-1560.00") // "-1.560,00"
