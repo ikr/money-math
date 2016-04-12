@@ -80,6 +80,12 @@
             assert.strictEqual(money.format("EUR", "-1560.00"), "-1.560,00");
             assert.strictEqual(money.format("EUR", "-100000000000.00"), "-100.000.000.000,00");
         });
+
+        it("works for SEK", function () {
+            assert.strictEqual(money.format("SEK", "560.00"), "560,00");
+            assert.strictEqual(money.format("SEK", "-1560.00"), "-1 560,00");
+            assert.strictEqual(money.format("SEK", "-100000000000.00"), "-100 000 000 000,00");
+        });
     });
 
     describe("money.add()", function () {
