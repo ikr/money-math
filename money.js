@@ -80,6 +80,13 @@
         case "USD":
             return separateThousands(integerValue(amount), ",") + "." + amount.substr(-2);
 
+        case "SEK":
+        case "LTL":
+        case "PLN":
+        case "SKK":
+        case "UAH":
+            return separateThousands(integerValue(amount), " ") + "," + amount.substr(-2);
+
         default:
             return amount;
         }
