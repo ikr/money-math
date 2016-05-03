@@ -9,7 +9,7 @@
         var BigInteger = require("jsbn");
         factory(root, exports, BigInteger);
     } else {
-        root.Money = factory(root, {}, root.BigInteger);
+        root.Money = factory(root, {}, root.jsbn.BigInteger);
     }
 }(function (root, Money, BigInteger) {
     "use strict";
