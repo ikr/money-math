@@ -6,7 +6,7 @@
 
 
     if (typeof exports !== "undefined") {
-        var BigInteger = require("jsbn");
+        var BigInteger = require("jsbn").BigInteger;
         factory(root, exports, BigInteger);
     } else {
         var BigInt = root.BigInteger ? root.BigInteger : root.jsbn.BigInteger;
