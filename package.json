@@ -27,14 +27,14 @@
     "format"
   ],
   "dependencies": {
-    "jsbn": "0.0.0"
+    "jsbn": "0.1.0"
   },
   "directories": {
     "lib": ".",
     "test": "spec"
   },
   "devDependencies": {
-    "eslint": "^0.23.0",
+    "eslint": "^2.10.2",
     "mocha": "^2.2.5"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",
