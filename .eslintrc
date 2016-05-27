@@ -5,7 +5,7 @@ env:
 
 rules:
   no-console: 1
-  no-reserved-keys: 2
+  quote-props: 2
   quotes:
     - 2
     - double
@@ -29,9 +29,11 @@ rules:
   padded-blocks:
     - 2
     - never
-  space-after-keywords:
+  keyword-spacing:
     - 2
-    - always
+    -
+      before: true
+      after: true
   space-before-blocks:
     - 2
     - always
@@ -40,7 +42,10 @@ rules:
     -
       anonymous: always
       named: never
-  space-in-brackets:
+  object-curly-spacing:
+    - 2
+    - never
+  array-bracket-spacing:
     - 2
     - never
   space-in-parens:
