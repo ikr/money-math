@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "eslint": "^3.0.1",
-    "mocha": "^2.2.5"
+    "mocha": "^3.0.2"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT"
