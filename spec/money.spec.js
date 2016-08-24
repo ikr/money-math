@@ -208,16 +208,28 @@
     });
 
     describe("money.floatToAmount()", function () {
-        it("it converts a float with 2-digit fractional part to string", function () {
+        it("it converts a positive float with 2-digit fractional part to string", function () {
             assert.strictEqual(money.floatToAmount(11.12), "11.12");
         });
 
-        it("it appends '.00' to a whole number", function () {
+        it("it appends '.00' to a whole positive number", function () {
             assert.strictEqual(money.floatToAmount(56), "56.00");
         });
 
-        it("it appends '.0' to a number with 1-digit fraction", function () {
+        it("it appends '.0' to a positive number with 1-digit fraction", function () {
             assert.strictEqual(money.floatToAmount(56.3), "56.30");
+        });
+
+        it("it converts a negative float with 2-digit fractional part to string", function () {
+            assert.strictEqual(money.floatToAmount(-11.12), "-11.12");
+        });
+
+        it("it appends '.00' to a whole negative number", function () {
+            assert.strictEqual(money.floatToAmount(-56), "-56.00");
+        });
+
+        it("it appends '.0' to a negative number with 1-digit fraction", function () {
+            assert.strictEqual(money.floatToAmount(-56.3), "-56.30");
         });
 
         it("rounds up a long-fraction number A", function () {
