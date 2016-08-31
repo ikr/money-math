@@ -1,3 +1,7 @@
+# v2.4.3
+
+* Documentation update
+
 # v2.4.2
 
 - Fix floatToAmount on negatives
