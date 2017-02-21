@@ -28,7 +28,7 @@
   ],
   "engine": "node >= 0.10",
   "dependencies": {
-    "jsbn": "0.1.0"
+    "jsbn": "0.1.1"
   },
   "directories": {
     "lib": ".",
