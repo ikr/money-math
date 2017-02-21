@@ -1,6 +1,6 @@
 {
   "name": "money-math",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "jsbn-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
   "main": "money.js",
   "scripts": {
