@@ -72,6 +72,9 @@ money.mul("24.00", "0.25");         // "6.00"
 money.div("64.00", "2.00");         // "32.00"
 money.percent("200.00", "3.25");    // "6.50"
 money.cmp("100.00", "200.00");      // -1
+money.isZero("0.00");               // true
+money.isNegative("-1.00");          // true
+money.isPositive("-1.00");          // false
 
 money.format("JPY", "236800.00");   // "236,800"
 money.floatToAmount(56.345);        // "56.35"
