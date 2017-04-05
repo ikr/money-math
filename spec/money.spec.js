@@ -336,6 +336,17 @@
         });
     });
 
+
+    describe("money.isEqual()", function () {
+        it("-100.00 not equal 100.00", function () {
+            assert.strictEqual(money.isEqual("-100.00", "100.00"), false);
+        });
+
+        it("1.00 equals 1.00", function () {
+            assert.strictEqual(money.isEqual("1.00", "1.00"), true);
+        });
+    });
+
     describe("money.cmp()", function () {
         it("big and small", function () {
             assert.strictEqual(money.cmp("55.00", "6.00") > 0, true);
