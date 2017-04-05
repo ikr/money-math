@@ -1,6 +1,6 @@
 # v2.4.5
 
-* Add `isZero()`, `isPositive()` and `isNegative()` methods
+* Add `isZero()`, `isEqual()`, `isPositive()` and `isNegative()` methods
 
 # v2.4.3
 

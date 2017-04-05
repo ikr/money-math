@@ -72,6 +72,7 @@ money.mul("24.00", "0.25");         // "6.00"
 money.div("64.00", "2.00");         // "32.00"
 money.percent("200.00", "3.25");    // "6.50"
 money.cmp("100.00", "200.00");      // -1
+money.isEqual("100.00", "100.00");  // true
 money.isZero("0.00");               // true
 money.isNegative("-1.00");          // true
 money.isPositive("-1.00");          // false
