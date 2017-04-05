@@ -293,45 +293,45 @@
         });
     });
 
-    describe("money.isNegative()", function() {
-        it("-100.00 is negative", function() {
+    describe("money.isNegative()", function () {
+        it("-100.00 is negative", function () {
             assert.strictEqual(money.isNegative("-100.00"), true);
         });
 
-        it("100.00 is not negative", function() {
+        it("100.00 is not negative", function () {
             assert.strictEqual(money.isNegative("100.00"), false);
         });
 
-        it("0 is not negative", function() {
+        it("0 is not negative", function () {
             assert.strictEqual(money.isNegative("0.00"), false);
         });
     });
 
-    describe("money.isPositive()", function() {
-        it("-100.00 is not positive", function() {
+    describe("money.isPositive()", function () {
+        it("-100.00 is not positive", function () {
             assert.strictEqual(money.isPositive("-100.00"), false);
         });
 
-        it("100.00 is positive", function() {
+        it("100.00 is positive", function () {
             assert.strictEqual(money.isPositive("100.00"), true);
         });
 
-        it("0 is not positive", function() {
+        it("0 is not positive", function () {
             assert.strictEqual(money.isPositive("0.00"), false);
         });
     });
 
 
-    describe("money.isZero()", function() {
-        it("-100.00 is not zero", function() {
+    describe("money.isZero()", function () {
+        it("-100.00 is not zero", function () {
             assert.strictEqual(money.isZero("-100.00"), false);
         });
 
-        it("100.00 is not zero", function() {
+        it("100.00 is not zero", function () {
             assert.strictEqual(money.isZero("100.00"), false);
         });
 
-        it("0 is zero", function() {
+        it("0 is zero", function () {
             assert.strictEqual(money.isZero("0.00"), true);
         });
     });
