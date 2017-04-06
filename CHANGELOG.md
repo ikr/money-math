@@ -1,3 +1,7 @@
+# v2.4.5
+
+* Add `isZero()`, `isEqual()`, `isPositive()` and `isNegative()` methods
+
 # v2.4.3
 
 * Documentation update

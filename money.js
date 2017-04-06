@@ -220,5 +220,21 @@
         return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
     };
 
+    Money.isEqual = function (a, b) {
+        return Money.cmp(a, b) === 0;
+    };
+    
+    Money.isZero = function (a) {
+        return Money.isEqual(a, "0.00");
+    };
+
+    Money.isNegative = function (a) {
+        return Money.cmp(a, "0.00") < 0;
+    };
+
+    Money.isPositive = function (a) {
+        return Money.cmp(a, "0.00") > 0;
+    };
+
     return Money;
 }));
