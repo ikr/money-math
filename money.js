@@ -1,8 +1,8 @@
-(function (factory) {
+(function(factory) {
     "use strict";
 
     var root = (typeof self === "object" && self.self === self && self) ||
-                (typeof global === "object" && global.global === global && global);
+        (typeof global === "object" && global.global === global && global);
 
 
     if (typeof exports !== "undefined") {
@@ -12,14 +12,16 @@
         var BigInt = root.BigInteger ? root.BigInteger : root.jsbn.BigInteger;
         root.Money = factory(root, {}, BigInt);
     }
-}(function (root, Money, BigInteger) {
+}(function(root, Money, BigInteger) {
     "use strict";
 
-    var Currency = function (code) {
+    var MONEY_MATH_REGEXP = /^(\-?\d+)\.\d\d$/;
+
+    var Currency = function(code) {
             this.code = code;
         },
 
-        separateThousands = function (inStr, withStr) {
+        separateThousands = function(inStr, withStr) {
             var sign = "",
                 src = inStr,
                 ret = "",
@@ -49,15 +51,15 @@
             return sign + ret;
         },
 
-        integerValue = function (amount) {
-            return (/^(\-?\d+)\.\d\d$/).exec(amount)[1];
+        integerValue = function(amount) {
+            return (MONEY_MATH_REGEXP).exec(amount)[1];
         },
 
-        isString = function (obj) {
+        isString = function(obj) {
             return Object.prototype.toString.call(obj) === "[object String]";
         },
 
-        round = function (amount) {
+        round = function(amount) {
             var fraction = parseInt(amount.substr(-2), 10),
                 wholeAmount = integerValue(amount) + ".00";
 
@@ -68,36 +70,36 @@
             );
         };
 
-    Currency.prototype.format = function (amount) {
+    Currency.prototype.format = function(amount) {
         switch (this.code) {
-        case "JPY":
-            return separateThousands(integerValue(amount), ",");
+            case "JPY":
+                return separateThousands(integerValue(amount), ",");
 
-        case "EUR":
-        case "GBP":
-            return separateThousands(integerValue(amount), ".") + "," + amount.substr(-2);
+            case "EUR":
+            case "GBP":
+                return separateThousands(integerValue(amount), ".") + "," + amount.substr(-2);
 
-        case "CHF":
-        case "USD":
-            return separateThousands(integerValue(amount), ",") + "." + amount.substr(-2);
+            case "CHF":
+            case "USD":
+                return separateThousands(integerValue(amount), ",") + "." + amount.substr(-2);
 
-        case "SEK":
-        case "LTL":
-        case "PLN":
-        case "SKK":
-        case "UAH":
-            return separateThousands(integerValue(amount), " ") + "," + amount.substr(-2);
+            case "SEK":
+            case "LTL":
+            case "PLN":
+            case "SKK":
+            case "UAH":
+                return separateThousands(integerValue(amount), " ") + "," + amount.substr(-2);
 
-        default:
-            return amount;
+            default:
+                return amount;
         }
     };
 
-    Money.amountToCents = function (amount) {
+    Money.amountToCents = function(amount) {
         return amount.replace(".", "");
     };
 
-    Money.centsToAmount = function (cents) {
+    Money.centsToAmount = function(cents) {
         var sign,
             abs;
 
@@ -115,23 +117,39 @@
         return sign + abs.substr(0, abs.length - 2) + "." + abs.substr(-2);
     };
 
-    Money.floatToAmount = function (f) {
+
+    Money.floatToAmount = function(f) {
         return ("" + (Math.round(f * 100.0) / 100.0))
-        .replace(/^-(\d+)$/, "-$1.00")              //-xx
-        .replace(/^(\d+)$/, "$1.00")                //xx
-        .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
-        .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
+            .replace(/^-(\d+)$/, "-$1.00") //-xx
+            .replace(/^(\d+)$/, "$1.00") //xx
+            .replace(/^-(\d+)\.(\d)$/, "-$1.$20") //-xx.xx
+            .replace(/^(\d+)\.(\d)$/, "$1.$20"); //xx.xx
     };
 
-    Money.integralPart = function (amount) {
+    Money.anyToAmount = function(any) {
+        if (isString(any)) {
+            if (MONEY_MATH_REGEXP.test(any)) {
+                // is already in the right format
+                return any;
+            }
+
+            return undefined;
+        }
+
+
+        // assume it is float/int 
+        return Money.floatToAmount(any);
+    };
+
+    Money.integralPart = function(amount) {
         return integerValue(amount);
     };
 
-    Money.format = function (currency, amount) {
+    Money.format = function(currency, amount) {
         return new Currency(currency).format(amount);
     };
 
-    Money.add = function (a, b) {
+    Money.add = function(a, b) {
         return Money.centsToAmount(
             new BigInteger(
                 Money.amountToCents(a)
@@ -141,7 +159,7 @@
         );
     };
 
-    Money.subtract = function (a, b) {
+    Money.subtract = function(a, b) {
         return Money.centsToAmount(
             new BigInteger(
                 Money.amountToCents(a)
@@ -151,7 +169,7 @@
         );
     };
 
-    Money.mul = function (a, b) {
+    Money.mul = function(a, b) {
         return Money.centsToAmount(
             new BigInteger(
                 Money.amountToCents(a)
@@ -163,7 +181,7 @@
         );
     };
 
-    Money.div = function (a, b) {
+    Money.div = function(a, b) {
         var hundredthsOfCents = new BigInteger(
                 Money.amountToCents(a)
             ).multiply(
@@ -183,7 +201,7 @@
         );
     };
 
-    Money.percent = function (value, percent) {
+    Money.percent = function(value, percent) {
         var p = new BigInteger(
                 Money.amountToCents(value)
             ).multiply(
@@ -198,7 +216,7 @@
         );
     };
 
-    Money.roundUpTo5Cents = function (amount) {
+    Money.roundUpTo5Cents = function(amount) {
         var lastDigit = parseInt(amount.substr(-1), 10),
             additon = "0.00";
 
@@ -209,30 +227,38 @@
         return Money.add(amount, additon);
     };
 
-    Money.roundTo5Cents = function (amount) {
+    Money.roundTo5Cents = function(amount) {
         return Money.div(
             round(Money.mul(amount, "20.00")),
             "20.00"
         );
     };
 
-    Money.cmp = function (a, b) {
+    Money.cmp = function(a, b) {
         return new BigInteger(a.replace(".", "")).compareTo(new BigInteger(b.replace(".", "")));
     };
 
-    Money.isEqual = function (a, b) {
+    Money.isSmallerThan = function(a, b) {
+        return Money.cmp(a, b) < 0;
+    };
+
+    Money.isGreaterThan = function(a, b) {
+        return Money.cmp(a, b) > 0;
+    };
+
+    Money.isEqual = function(a, b) {
         return Money.cmp(a, b) === 0;
     };
-    
-    Money.isZero = function (a) {
+
+    Money.isZero = function(a) {
         return Money.isEqual(a, "0.00");
     };
 
-    Money.isNegative = function (a) {
+    Money.isNegative = function(a) {
         return Money.cmp(a, "0.00") < 0;
     };
 
-    Money.isPositive = function (a) {
+    Money.isPositive = function(a) {
         return Money.cmp(a, "0.00") > 0;
     };
 

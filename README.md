@@ -73,12 +73,17 @@ money.div("64.00", "2.00");         // "32.00"
 money.percent("200.00", "3.25");    // "6.50"
 money.cmp("100.00", "200.00");      // -1
 money.isEqual("100.00", "100.00");  // true
+money.isGreaterThan("5.00", "3.00");// true
+money.isSmallerThan("1.00", "3.00");// true
 money.isZero("0.00");               // true
 money.isNegative("-1.00");          // true
 money.isPositive("-1.00");          // false
 
 money.format("JPY", "236800.00");   // "236,800"
 money.floatToAmount(56.345);        // "56.35"
+money.anyToAmount(56.345);          // "56.35"
+money.anyToAmount("56.34");         // "56.35"
+money.anyToAmount("56.343");        // undefined
 ```
 
 And last, but not least :)

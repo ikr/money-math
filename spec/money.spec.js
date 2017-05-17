@@ -253,6 +253,69 @@
         });
     });
 
+
+    describe("money.anyToAmount()", function () {
+        it("it converts a positive float with 2-digit fractional part to string", function () {
+            assert.strictEqual(money.anyToAmount(11.12), "11.12");
+        });
+
+        it("it appends '.00' to a whole positive number", function () {
+            assert.strictEqual(money.anyToAmount(56), "56.00");
+        });
+
+        it("it appends '.0' to a positive number with 1-digit fraction", function () {
+            assert.strictEqual(money.anyToAmount(56.3), "56.30");
+        });
+
+        it("it converts a negative float with 2-digit fractional part to string", function () {
+            assert.strictEqual(money.anyToAmount(-11.12), "-11.12");
+        });
+
+        it("it appends '.00' to a whole negative number", function () {
+            assert.strictEqual(money.anyToAmount(-56), "-56.00");
+        });
+
+        it("it appends '.0' to a negative number with 1-digit fraction", function () {
+            assert.strictEqual(money.anyToAmount(-56.3), "-56.30");
+        });
+
+        it("rounds up a long-fraction number A", function () {
+            assert.strictEqual(money.anyToAmount(56.3411111), "56.34");
+        });
+
+        it("rounds up a long-fraction number B", function () {
+            assert.strictEqual(money.anyToAmount(56.345), "56.35");
+        });
+
+        it("rounds up a long-fraction number C", function () {
+            assert.strictEqual(money.anyToAmount(0.3499), "0.35");
+        });
+
+        it("rounds up a long-fraction number D", function () {
+            assert.strictEqual(money.anyToAmount(-0.345), "-0.34");
+        });
+
+        it("rounds up a long-fraction number E", function () {
+            assert.strictEqual(money.anyToAmount(-0.346), "-0.35");
+        });
+
+        it("keeps already converted positive amount", function () {
+            assert.strictEqual(money.anyToAmount("1.35"), "1.35");
+        });
+
+        it("keeps already converted negative amount", function () {
+            assert.strictEqual(money.anyToAmount("-0.35"), "-0.35");
+        });
+
+        it("returns undefined for invalid amount strings", function () {
+            assert.strictEqual(money.anyToAmount("-0.3"), undefined);
+        });
+
+        it("returns undefined for invalid rubbish strings", function () {
+            assert.strictEqual(money.anyToAmount("foo"), undefined);
+        });
+    });
+
     describe("money.roundUpTo5Cents()", function () {
         it("is identical for zero", function () {
             assert.strictEqual(money.roundUpTo5Cents("0.00"), "0.00");
@@ -321,7 +384,6 @@
         });
     });
 
-
     describe("money.isZero()", function () {
         it("-100.00 is not zero", function () {
             assert.strictEqual(money.isZero("-100.00"), false);
@@ -336,7 +398,6 @@
         });
     });
 
-
     describe("money.isEqual()", function () {
         it("-100.00 not equal 100.00", function () {
             assert.strictEqual(money.isEqual("-100.00", "100.00"), false);
@@ -344,6 +405,42 @@
 
         it("1.00 equals 1.00", function () {
             assert.strictEqual(money.isEqual("1.00", "1.00"), true);
+        });
+    });
+
+    describe("money.isSmallerThan()", function () {
+        it("-100.00 smaller than 100.00", function () {
+            assert.strictEqual(money.isSmallerThan("-100.00", "100.00"), true);
+        });
+
+        it("-100.00 smaller than -100.00", function () {
+            assert.strictEqual(money.isSmallerThan("-100.00", "-100.00"), false);
+        });
+
+        it("100.00 smaller than -100.00", function () {
+            assert.strictEqual(money.isSmallerThan("100.00", "-100.00"), false);
+        });
+
+        it("100.00 smaller than 100.00", function () {
+            assert.strictEqual(money.isSmallerThan("100.00", "100.00"), false);
+        });
+    });
+
+    describe("money.isGreaterThan()", function () {
+        it("-100.00 greater than 100.00", function () {
+            assert.strictEqual(money.isGreaterThan("-100.00", "100.00"), false);
+        });
+
+        it("-100.00 greater than -100.00", function () {
+            assert.strictEqual(money.isGreaterThan("-100.00", "-100.00"), false);
+        });
+
+        it("100.00 greater than -100.00", function () {
+            assert.strictEqual(money.isGreaterThan("100.00", "-100.00"), true);
+        });
+
+        it("100.00 greater than 100.00", function () {
+            assert.strictEqual(money.isGreaterThan("100.00", "100.00"), false);
         });
     });
 
