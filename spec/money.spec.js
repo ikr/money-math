@@ -207,6 +207,24 @@
         });
     });
 
+    describe("money.percentOf()", function () {
+        it("calculates the percentage that [1st argument] is of [2nd argument] 1", function () {
+            assert.strictEqual(money.percentOf(50, 100), "50.00");
+        });
+
+        it("calculates the percentage that [1st argument] is of [2nd argument] 2", function () {
+            assert.strictEqual(money.percentOf(110, 100), "110.00");
+        });
+
+        it("calculates the percentage that [1st argument] is of [2nd argument] 3", function () {
+            assert.strictEqual(money.percentOf(1.11, 100), "1.11");
+        });
+
+        it("calculates the percentage that [1st argument] is of [2nd argument] 4", function () {
+            assert.strictEqual(money.percentOf(2, 20), "10.00");
+        });
+    });
+
     describe("money.floatToAmount()", function () {
         it("it converts a positive float with 2-digit fractional part to string", function () {
             assert.strictEqual(money.floatToAmount(11.12), "11.12");

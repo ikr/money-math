@@ -216,6 +216,18 @@
         );
     };
 
+    Money.percentOf = function(partValue, largeValue) {
+        var p = Money.div(
+            Money.mul(
+                Money.anyToAmount(partValue),
+                "100.00"
+            ),
+            Money.anyToAmount(largeValue)
+        );
+
+        return p;
+    };
+
     Money.roundUpTo5Cents = function(amount) {
         var lastDigit = parseInt(amount.substr(-1), 10),
             additon = "0.00";
