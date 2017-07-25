@@ -251,6 +251,14 @@
         it("rounds up a long-fraction number E", function () {
             assert.strictEqual(money.floatToAmount(-0.346), "-0.35");
         });
+
+        it ("can use commas as delimiter", function () {
+            assert.strictEqual(money.floatToAmount("12,40"), "12.40");
+        });
+
+        it ("can use commas as delimiter with 1-digit fraction", function () {
+            assert.strictEqual(money.floatToAmount("12,4"), "12.40");
+        });
     });
 
     describe("money.roundUpTo5Cents()", function () {

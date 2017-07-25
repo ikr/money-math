@@ -116,11 +116,12 @@
     };
 
     Money.floatToAmount = function (f) {
-        return ("" + (Math.round(f * 100.0) / 100.0))
-        .replace(/^-(\d+)$/, "-$1.00")              //-xx
-        .replace(/^(\d+)$/, "$1.00")                //xx
-        .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
-        .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
+        var f_ = typeof f === "string" ? f.replace(/,/, ".") : f
+        return ("" + (Math.round(f_ * 100.0) / 100.0))
+            .replace(/^-(\d+)$/, "-$1.00")              //-xx
+            .replace(/^(\d+)$/, "$1.00")                //xx
+            .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
+            .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
     };
 
     Money.integralPart = function (amount) {
