@@ -63,8 +63,8 @@
 
             return (
                 fraction < 50 ?
-                wholeAmount :
-                Money.add(wholeAmount, "1.00")
+                    wholeAmount :
+                    Money.add(wholeAmount, "1.00")
             );
         };
 
@@ -117,10 +117,10 @@
 
     Money.floatToAmount = function (f) {
         return ("" + (Math.round(f * 100.0) / 100.0))
-        .replace(/^-(\d+)$/, "-$1.00")              //-xx
-        .replace(/^(\d+)$/, "$1.00")                //xx
-        .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
-        .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
+            .replace(/^-(\d+)$/, "-$1.00")              //-xx
+            .replace(/^(\d+)$/, "$1.00")                //xx
+            .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
+            .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
     };
 
     Money.integralPart = function (amount) {
@@ -223,7 +223,7 @@
     Money.isEqual = function (a, b) {
         return Money.cmp(a, b) === 0;
     };
-    
+
     Money.isZero = function (a) {
         return Money.isEqual(a, "0.00");
     };

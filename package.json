@@ -35,8 +35,8 @@
     "test": "spec"
   },
   "devDependencies": {
-    "eslint": "^3.0.1",
-    "mocha": "^3.0.0"
+    "eslint": "^4.9.0",
+    "mocha": "^4.0.1"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT"
