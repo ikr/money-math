@@ -152,13 +152,19 @@
     };
 
     Money.mul = function (a, b) {
-        return Money.centsToAmount(
-            new BigInteger(
+        var hundredthsOfCents = new BigInteger(
                 Money.amountToCents(a)
             ).multiply(
                 new BigInteger(Money.amountToCents(b))
-            ).divide(
+            ),
+
+            remainder = parseInt(hundredthsOfCents.toString().substr(-2), 10);
+
+        return Money.centsToAmount(
+            hundredthsOfCents.divide(
                 new BigInteger("100")
+            ).add(
+                new BigInteger(remainder >= 50 ? "1" : "0")
             ).toString()
         );
     };
@@ -178,7 +184,7 @@
             hundredthsOfCents.divide(
                 new BigInteger("100")
             ).add(
-                new BigInteger(remainder > 50 ? "1" : "0")
+                new BigInteger(remainder >= 50 ? "1" : "0")
             ).toString()
         );
     };

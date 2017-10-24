@@ -165,6 +165,10 @@
         it("multiplies two decimals 2", function () {
             assert.strictEqual(money.mul("24.00", "0.25"), "6.00");
         });
+
+        it("does the rounding right", function () {
+            assert.strictEqual(money.mul("2090.50", "8.61"), "17999.21");
+        });
     });
 
     describe("money.div()", function () {
