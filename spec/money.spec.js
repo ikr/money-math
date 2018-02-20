@@ -187,6 +187,10 @@
         it("works for negative dividend, with rounding up", function () {
             assert.strictEqual(money.div("-1.00", "3.00"), "-0.33");
         });
+
+        it("works for small fractions", function () {
+            assert.strictEqual(money.div("0.02", "0.03"), "0.67");
+        });
     });
 
     describe("money.percent()", function () {
