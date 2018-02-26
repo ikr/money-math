@@ -1,28 +1,15 @@
-# v2.4.5
+# v2.5.1
 
-* Add `isZero()`, `isEqual()`, `isPositive()` and `isNegative()` methods
++ Add `isZero()`, `isEqual()`, `isPositive()` and `isNegative()` methods
+- Fix the rounding for mul and div
 
-# v2.4.3
-
-* Documentation update
-
-# v2.4.2
+# v2.4.4
 
 - Fix floatToAmount on negatives
-
-# v2.4.1
-
-+ Support fresher dependencies
-
-# v2.4.0
-
+* Support fresher dependencies
 + Formatting for SEK, LTL, PLN, SKK and UAH
 
 # v2.3.1
-
-* Documentation update
-
-# v2.3.0
 
 + Support the browser-global mode
 
