@@ -4,6 +4,7 @@
   "description": "jsbn-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
   "main": "./dist/money.min.js",
   "module": "./dist/money.js",
+  "types": "./dist/money.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "npm run lint && tsc && webpack-cli",
