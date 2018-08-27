@@ -2,7 +2,7 @@
     "use strict";
 
     var assert = require("assert"),
-        money = require("../money");
+        money = require("../dist/money");
 
     describe("money.amountToCents()", function () {
         it("works on positive amount", function () {
