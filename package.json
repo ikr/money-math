@@ -2,9 +2,14 @@
   "name": "money-math",
   "version": "2.5.1",
   "description": "jsbn-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
-  "main": "money.js",
+  "main": "./dist/money.min.js",
+  "module": "./dist/money.js",
+  "types": "./dist/money.d.ts",
   "scripts": {
-    "pretest": "eslint ./*.js ./spec/*.js",
+    "prepublish": "npm run build",
+    "build": "npm run lint && tsc && webpack-cli",
+    "lint": "tslint -p tsconfig.json",
+    "pretest": "tsc && eslint ./spec/*.js",
     "test": "mocha ./spec/*.spec.js",
     "tdd": "mocha -b -R min -w ./spec/*.spec.js"
   },
@@ -35,8 +40,13 @@
     "test": "spec"
   },
   "devDependencies": {
+    "@types/jsbn": "^1.2.29",
     "eslint": "^4.9.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   },
   "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT"

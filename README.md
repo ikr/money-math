@@ -47,6 +47,7 @@ Because storing currency amounts in floats [is a really bad idea](http://stackov
 Works both on Node and in the browser.
 
 # Node/Browserify/Webpack
+
     $ npm install --save money-math
 
 ```javascript
@@ -55,12 +56,11 @@ var money = require("money-math");
 
 # Browser global
 
-Download [jsbn/index.js](https://github.com/andyperlitch/jsbn/blob/master/index.js)
-
-Download [money.js](money.js)
-
-```javascript
-window.Money
+```html
+<script src="https://cdn.jsdelivr.net/npm/@taoqf/money-math"></script>
+<script>
+    window.Money
+</script>
 ```
 
 # Usage
