@@ -80,7 +80,7 @@ export function integralPart(amount: string) {
 	return integerValue(amount);
 }
 
-export function format(currency: 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'LTL' | 'PLN' | 'SEK' | 'SKK' | 'UAH' | 'USD', amount: string) {
+export function format(currency: 'CHF' | 'CNY' | 'EUR' | 'GBP' | 'JPY' | 'LTL' | 'PLN' | 'SEK' | 'SKK' | 'UAH' | 'USD' | string, amount: string) {
 	switch (currency) {
 		case 'JPY':
 			return separateThousands(integerValue(amount), ',');
