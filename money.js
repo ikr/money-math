@@ -94,7 +94,7 @@
     };
 
     Money.amountToCents = function (amount) {
-        return amount.replace(".", "");
+        return amount.replace(".", "").replace(/^0+/, "");
     };
 
     Money.centsToAmount = function (cents) {
