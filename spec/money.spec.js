@@ -12,6 +12,10 @@
         it("works on negative amount", function () {
             assert.strictEqual(money.amountToCents("-10001.00"), "-1000100");
         });
+
+        it("works on just cents, removes 0 from start", function () {
+            assert.strictEqual(money.amountToCents("0.99"), "99");
+        });
     });
 
     describe("money.centsToAmount()", function () {
