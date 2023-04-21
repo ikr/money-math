@@ -241,6 +241,22 @@
     Money.isPositive = function (a) {
         return Money.cmp(a, "0.00") > 0;
     };
+    
+    Money.isGreater = function (a, b) {
+        return Money.cmp(a, b) > 0;
+    };
+    
+    Money.isGreaterOrEqualTo = function (a, b) {
+        return Money.cmp(a, b) >= 0;
+    };
+
+    Money.isLesser = function (a, b) {
+        return Money.cmp(a, b) < 0;
+    };
+    
+    Money.isLesserOrEqualTo = function (a, b) {
+        return Money.cmp(a, b) < 0;
+    };
 
     return Money;
 }));
