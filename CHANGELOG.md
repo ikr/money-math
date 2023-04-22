@@ -1,3 +1,7 @@
+# v2.6.0
+
++ Add `isLessThan()`, `isGreaterThan()`, `isLessOrEqualTo()`, `isGreaterOrEqualTo()` methods
+
 # v2.5.1
 
 + Add `isZero()`, `isEqual()`, `isPositive()` and `isNegative()` methods
