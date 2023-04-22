@@ -76,6 +76,10 @@ money.isEqual("100.00", "100.00");  // true
 money.isZero("0.00");               // true
 money.isNegative("-1.00");          // true
 money.isPositive("-1.00");          // false
+money.isGreater("2.00", "1.00"); // true
+money.isGreaterOrEqualTo("2.00", "2.00"); // true
+money.isLesser("2.00", "1.00"); // false
+money.isLesserOrEqualTo("2.00", "2.00"); // true
 
 money.format("JPY", "236800.00");   // "236,800"
 money.floatToAmount(56.345);        // "56.35"
