@@ -105,11 +105,12 @@ understand that it may be confusing to some of new users; but I believe that's a
 pragmatic way to mimic, by convention, an algebraic data type in idiomatic JavaScript -- a (very)
 dynamically typed language.
 
-Luckily, you can always move your arbitrary float value into the _amounts field_ with
-`money.floatToAmount(...)`. Once all the values are _amounts,_ money-math guarantees that all the
-_field_ operations keep the results withing the _field._ Classic algebra.
+Just for the sake of convenience, we provide a way to approximate an **imprecise** float value in
+the _amounts field_ with `money.floatToAmount(…)` (half up rounding applied). Once all the values
+are _amounts,_ money-math guarantees that all the _field_ operations keep the results withing the
+_field._ Classic algebra.
 
-A thoughtful reader may ask, why have `money.floatToAmount()`, when there's the
+A thoughtful reader might ask, why have `money.floatToAmount()`, when there's the
 `Number.prototype.toFixed(2)`? Well, because:
 
 ```javascript

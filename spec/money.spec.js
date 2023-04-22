@@ -287,6 +287,10 @@
         it("rounds 8.165 to 8.17", function () {
             assert.strictEqual(money.floatToAmount(8.165), "8.17");
         });
+
+        it("can handle the exponential notation", function () {
+            assert.strictEqual(money.floatToAmount(23e20), "2300000000000000000000.00");
+        });
     });
 
     describe("money.roundUpTo5Cents()", function () {

@@ -116,7 +116,7 @@
     };
 
     Money.floatToAmount = function (f) {
-        var s = String(f);
+        var s = (String(f).indexOf("e") === -1) ? String(f) : f.toPrecision(100);
         if (s.indexOf(".") === -1) {
             s = s.concat(".0");
         }
@@ -131,8 +131,8 @@
         }
         suffix = suffix.substring(0, 3);
 
-        var a = parseInt(suffix.substring(0,3), 10);
-        var b = parseInt(suffix.substring(2,3), 10);
+        var a = parseInt(suffix.substring(0, 3), 10);
+        var b = parseInt(suffix.substring(2, 3), 10);
         a = parseInt(String(a).substring(0, 2), 10);
 
         if (b >= (isNegative ? 6: 5)) {
