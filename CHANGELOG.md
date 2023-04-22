@@ -1,3 +1,7 @@
+# v2.6.1
+
+- Fix a rounding error in `floatToAmount()`. See https://github.com/ikr/money-math/issues/34
+
 # v2.6.0
 
 + Add `isLessThan()`, `isGreaterThan()`, `isLessOrEqualTo()`, `isGreaterOrEqualTo()` methods
