@@ -244,39 +244,39 @@
             assert.strictEqual(money.floatToAmount(-56.3), "-56.30");
         });
 
-        it("rounds up a long-fraction number A", function () {
+        it("rounds half up a long-fraction number A", function () {
             assert.strictEqual(money.floatToAmount(56.3411111), "56.34");
         });
 
-        it("rounds up a long-fraction number B", function () {
+        it("rounds half up a long-fraction number B", function () {
             assert.strictEqual(money.floatToAmount(56.345), "56.35");
         });
 
-        it("rounds up a long-fraction number C", function () {
+        it("rounds half up a long-fraction number C", function () {
             assert.strictEqual(money.floatToAmount(0.3499), "0.35");
         });
 
-        it("rounds up a long-fraction number D", function () {
+        it("rounds half up a long-fraction number D", function () {
             assert.strictEqual(money.floatToAmount(-0.345), "-0.34");
         });
 
-        it("rounds up a long-fraction number E", function () {
+        it("rounds half up a long-fraction number E", function () {
             assert.strictEqual(money.floatToAmount(-0.346), "-0.35");
         });
 
-        it("rounds half up the -0.235 to -0.23", function () {
+        it("rounds the -0.235 to -0.23", function () {
             assert.strictEqual(money.floatToAmount(-0.235), "-0.23");
         });
 
-        it("rounds half up the -100.996 to -101.00", function () {
+        it("rounds the -100.996 to -101.00", function () {
             assert.strictEqual(money.floatToAmount(-100.996), "-101.00");
         });
 
-        it("rounds half up the -999.995 to -999.99", function () {
+        it("rounds the -999.995 to -999.99", function () {
             assert.strictEqual(money.floatToAmount(-999.995), "-999.99");
         });
 
-        it("rounds half up the -999.996 to -1000.00", function () {
+        it("rounds the -999.996 to -1000.00", function () {
             assert.strictEqual(money.floatToAmount(-999.996), "-1000.00");
         });
 
