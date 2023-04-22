@@ -333,7 +333,6 @@
         });
     });
 
-
     describe("money.isZero()", function () {
         it("-100.00 is not zero", function () {
             assert.strictEqual(money.isZero("-100.00"), false);
@@ -345,17 +344,6 @@
 
         it("0 is zero", function () {
             assert.strictEqual(money.isZero("0.00"), true);
-        });
-    });
-
-
-    describe("money.isEqual()", function () {
-        it("-100.00 not equal 100.00", function () {
-            assert.strictEqual(money.isEqual("-100.00", "100.00"), false);
-        });
-
-        it("1.00 equals 1.00", function () {
-            assert.strictEqual(money.isEqual("1.00", "1.00"), true);
         });
     });
 
@@ -422,6 +410,32 @@
                 ) > 0,
                 true
             );
+        });
+    });
+
+    describe("money comparison helpers", function () {
+        it("-100.00 not equal 100.00", function () {
+            assert.strictEqual(money.isEqual("-100.00", "100.00"), false);
+        });
+
+        it("1.00 equals 1.00", function () {
+            assert.strictEqual(money.isEqual("1.00", "1.00"), true);
+        });
+
+        it("isLessThan", function () {
+            assert.strictEqual(money.isLessThan("1.00", "1.00"), false);
+        });
+
+        it("isGreaterThan", function () {
+            assert.strictEqual(money.isGreaterThan("1.00", "1.00"), false);
+        });
+
+        it("isLessOrEqualTo", function () {
+            assert.strictEqual(money.isLessOrEqualTo("1.00", "1.00"), true);
+        });
+
+        it("isGreaterOrEqualTo", function () {
+            assert.strictEqual(money.isGreaterOrEqualTo("1.00", "1.00"), true);
         });
     });
 }());
