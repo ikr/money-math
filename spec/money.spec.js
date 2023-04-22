@@ -264,6 +264,22 @@
             assert.strictEqual(money.floatToAmount(-0.346), "-0.35");
         });
 
+        it("rounds half up the -0.235 to -0.23", function () {
+            assert.strictEqual(money.floatToAmount(-0.235), "-0.23");
+        });
+
+        it("rounds half up the -100.996 to -101.00", function () {
+            assert.strictEqual(money.floatToAmount(-100.996), "-101.00");
+        });
+
+        it("rounds half up the -999.995 to -999.99", function () {
+            assert.strictEqual(money.floatToAmount(-999.995), "-999.99");
+        });
+
+        it("rounds half up the -999.996 to -1000.00", function () {
+            assert.strictEqual(money.floatToAmount(-999.996), "-1000.00");
+        });
+
         it("rounds 8.175 to 8.18", function () {
             assert.strictEqual(money.floatToAmount(8.175), "8.18");
         });
