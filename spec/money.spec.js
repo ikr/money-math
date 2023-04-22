@@ -269,7 +269,7 @@
         });
 
         it("rounds 8.165 to 8.17", function () {
-            assert.strictEqual(money.floatToAmount(8.175), "8.17");
+            assert.strictEqual(money.floatToAmount(8.165), "8.17");
         });
     });
 

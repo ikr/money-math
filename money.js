@@ -116,11 +116,34 @@
     };
 
     Money.floatToAmount = function (f) {
-        return ("" + (Math.round(f * 100.0) / 100.0))
-            .replace(/^-(\d+)$/, "-$1.00")              //-xx
-            .replace(/^(\d+)$/, "$1.00")                //xx
-            .replace(/^-(\d+)\.(\d)$/, "-$1.$20")       //-xx.xx
-            .replace(/^(\d+)\.(\d)$/, "$1.$20");        //xx.xx
+        var s = String(f);
+        if (s.indexOf(".") === -1) {
+            s = s.concat(".0");
+        }
+
+        var parts = s.split(".");
+        var prefixCents = parts[0] + "00";
+        var isNegative = prefixCents[0] == "-";
+        var suffix = parts[1];
+
+        while (suffix.length < 3) {
+            suffix = suffix + "0";
+        }
+        suffix = suffix.substring(0, 3);
+
+        var a = parseInt(suffix.substring(0,3), 10);
+        var b = parseInt(suffix.substring(2,3), 10);
+        a = parseInt(String(a).substring(0, 2), 10);
+
+        if (b >= (isNegative ? 6: 5)) {
+            a += 1;
+        }
+
+        var suffixCents = String((isNegative ? -1 : 1) * a);
+
+        return Money.centsToAmount(
+            new BigInteger(prefixCents).add(new BigInteger(suffixCents)).toString()
+        );
     };
 
     Money.integralPart = function (amount) {
