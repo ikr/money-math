@@ -263,6 +263,14 @@
         it("rounds up a long-fraction number E", function () {
             assert.strictEqual(money.floatToAmount(-0.346), "-0.35");
         });
+
+        it("rounds 8.175 to 8.18", function () {
+            assert.strictEqual(money.floatToAmount(8.175), "8.18");
+        });
+
+        it("rounds 8.165 to 8.17", function () {
+            assert.strictEqual(money.floatToAmount(8.175), "8.17");
+        });
     });
 
     describe("money.roundUpTo5Cents()", function () {
