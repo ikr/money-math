@@ -1,3 +1,7 @@
+# v2.6.2
+
+- Fix floatToAmount in XX.0X case. See https://github.com/ikr/money-math/issues/37
+
 # v2.6.1
 
 - Fix a rounding error in `floatToAmount()`. See https://github.com/ikr/money-math/issues/34
