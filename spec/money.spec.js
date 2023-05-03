@@ -291,6 +291,14 @@
         it("can handle the exponential notation", function () {
             assert.strictEqual(money.floatToAmount(23e20), "2300000000000000000000.00");
         });
+
+        it("doesn't flip 125.01 to 125.10", function () {
+            assert.strictEqual(money.floatToAmount(125.01), "125.01");
+        })
+
+        it("doesn't flip 99.08 to 99.80", function () {
+            assert.strictEqual(money.floatToAmount(99.08), "99.08");
+        })
     });
 
     describe("money.roundUpTo5Cents()", function () {
