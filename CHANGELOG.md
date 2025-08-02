@@ -1,3 +1,7 @@
+# v2.6.3
+
+- Fix amountToCents on "0.00". See https://github.com/ikr/money-math/pull/38
+
 # v2.6.2
 
 - Fix floatToAmount in XX.0X case. See https://github.com/ikr/money-math/issues/37
